@@ -50,5 +50,3 @@ jobs:
         working-directory: /Users/pgsp/POC/ai-demo
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-
-#test
