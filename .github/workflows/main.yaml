@@ -14,7 +14,7 @@ jobs:
 
       - name: GFT AImpact code review and fix
         run: |
-          cd POC/gft-aimpact-cli.uk
+          cd /Users/pgsp/POC/gft-aimpact-cli.uk
           gft codefix --config_path config-sample.yaml
 
 # add seperate step for code merge after collecting pull request number
@@ -50,5 +50,3 @@ jobs:
         working-directory: /Users/pgsp/POC/ai-demo
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-
-#test
