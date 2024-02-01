@@ -12,23 +12,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Create Pull Request
-        # ADD AN IF STATEMENT HERE TO CHECK IF THE CODE REVIEW AND FIX STEP WAS SUCCESSFUL
-        uses: peter-evans/create-pull-request@v3 # Using GitHub Action community action to create PR
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: Update from pasang branch
-          title: Update from pasang branch
-          branch: 'pasang-pr' # creates a branch pasang-pr to pull changes from pasang branch
-          base: 'main'
-          delete-branch: true # deletes the branch pasang-pr after merging
-          merge-method: 'squash'
-        # remove code merge 
       - name: GFT AImpact code review and fix
         run: |
-          echo "Running code review..." # do not need this before hand if we want to just run code review then create a different pipeline for this
-          echo "Running code fix..." # code fix runs code review inatley 
-          # Add my own logic here to determine whether the step was successful or not
+          cd POC/gft-aimpact-cli.uk
+          gft codefix --config_path config-sample.yaml
 
 # add seperate step for code merge after collecting pull request number
 
