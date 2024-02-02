@@ -16,6 +16,8 @@ jobs:
         run: |
           cd /Users/pgsp/POC/gft-aimpact-cli.uk
           gft codefix --config_path config-sample.yaml
+      - name : Print working directory
+        run: pwd
 
 # add seperate step for code merge after collecting pull request number
 
@@ -33,20 +35,20 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-        working-directory: /Users/pgsp/POC/gcs-ai-demo
+        working-directory: ~/Users/pgsp/POC/gcs-ai-demo
 
       - name: Terraform Validate
         run: terraform validate
-        working-directory: /Users/pgsp/POC/gcs-ai-demo
+        working-directory: ~/Users/pgsp/POC/gcs-ai-demo
 
       - name: Terraform Plan
         run: terraform plan
-        working-directory: /Users/pgsp/POC/gcs-ai-demo
+        working-directory: ~/Users/pgsp/POC/gcs-ai-demo
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
-        working-directory: /Users/pgsp/POC/gcs-ai-demo
+        working-directory: ~/Users/pgsp/POC/gcs-ai-demo
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
