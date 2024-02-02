@@ -27,9 +27,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
-      - name: CD into the directory
-        run: cd /Users/pgsp/POC/gcs-ai-demo
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
@@ -38,23 +35,19 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-        working-directory: ../../Users/pgsp/POC/gcs-ai-demo
 
       - name: Print working directory
         run: pwd
 
       - name: Terraform Validate
         run: terraform validate
-        working-directory: ../../Users/pgsp/POC/gcs-ai-demo
 
       - name: Terraform Plan
         run: terraform plan
-        working-directory: ../../Users/pgsp/POC/gcs-ai-demo
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
-        working-directory: ../../Users/pgsp/POC/gcs-ai-demo
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
