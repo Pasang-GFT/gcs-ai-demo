@@ -34,20 +34,25 @@ jobs:
           terraform_version: 0.14.0
 
       - name: Terraform Init
-        run: terraform init
-
-      - name: Print working directory
-        run: pwd
+        run: |
+         cd /Users/pgsp/POC/gcs-ai-demo
+         terraform init
 
       - name: Terraform Validate
-        run: terraform validate
+        run: |
+         cd /Users/pgsp/POC/gcs-ai-demo
+         terraform validate
 
       - name: Terraform Plan
-        run: terraform plan
+        run: |
+         cd /Users/pgsp/POC/gcs-ai-demo
+         terraform plan
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: |
+         cd /Users/pgsp/POC/gcs-ai-demo 
+         terraform apply -auto-approve
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
