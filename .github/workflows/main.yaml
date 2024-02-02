@@ -53,6 +53,6 @@ jobs:
       - name: Terraform Apply
         run: |
          cd /Users/pgsp/POC/gcs-ai-demo 
-         terraform apply -auto-approve
+         terraform destroy -auto-approve
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
