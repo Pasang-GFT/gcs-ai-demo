@@ -3,8 +3,8 @@ name: Story, Story Task, and Point Creation
 on:
     workflow_dispatch:
         inputs:
-            environment:
-                description: 'Environment to run the story creation'
+            description:
+                description: 'Description for the story'
                 required: true
 
 jobs:
@@ -17,6 +17,6 @@ jobs:
             - name: GFT AImpact Story Creation
                 run: |
                     cd /Users/pgsp/POC/gft-aimpact-cli.uk
-                    gft storycreator --description github.event.inputs.<description> --config_path configfiles/story/config-sample.yaml
+                    gft storycreator --description "${{ github.event.inputs.description }}" --config_path configfiles/story/config-sample.yaml
       
         
