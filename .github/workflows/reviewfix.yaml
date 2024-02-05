@@ -9,6 +9,7 @@ on:
 jobs:
   GFT-AI-Impact-Code-Review-and-Fix:
     runs-on: self-hosted # use self-hosted as we do not have access to GitHub Actions hosted runners
+    if: contains(github.event.head_commit.message, 'go')
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
