@@ -16,7 +16,7 @@ jobs:
       - name: GFT AImpact code review and fix
         run: |
           cd /Users/pgsp/POC/gft-aimpact-cli.uk
-          gft codefix --config_path config-sample.yaml
+          gft codefix --config_path configfiles/fix/config-sample.yaml
       
         
 
