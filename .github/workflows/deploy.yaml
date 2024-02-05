@@ -3,7 +3,7 @@ name: Deploy to GCP
 on:
   push:
     branches:
-      - main 
+      - main # Push or Merge to main will invoke this action
 
 jobs:
   Terraform:
@@ -32,11 +32,11 @@ jobs:
           cd /Users/pgsp/POC/gcs-ai-demo
           terraform plan
         env:
-          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }} # Credentials are stored as a secret in the GitHub repository
 
       - name: Terraform Apply
         run: |
           cd /Users/pgsp/POC/gcs-ai-demo 
           terraform apply -auto-approve
         env:
-          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }} # Credentials are stored as a secret in the GitHub repository

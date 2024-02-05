@@ -5,7 +5,7 @@ on:
     inputs:
       description:
         description: 'Description for the story'
-        required: true
+        required: true # Adds user input for description on gft story creation command.
 
 jobs:
   GFT-AI-Impact-Story-Creation:
@@ -18,5 +18,6 @@ jobs:
         run: |
           cd /Users/pgsp/POC/gft-aimpact-cli.uk
           gft storycreator --description "${{ github.event.inputs.description }}" --config_path configfiles/story/config-sample.yaml
+    
       
         

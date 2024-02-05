@@ -3,8 +3,8 @@ name: Review and Fix Code
 on:
   push:
     branches-ignore:
-      - main
-      - '*correction*'
+      - main # Any pushes to main are ignored as code will have been reviewed and fixed before merging.
+      - '*correction*' # Any pushes to branches with 'correction' in the name are ignored as code will have been reviewed and fixed before merging.
 
 jobs:
   GFT-AI-Impact-Code-Review-and-Fix:
