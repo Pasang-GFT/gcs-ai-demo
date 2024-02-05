@@ -1,18 +1,1 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Vulnerable Page</title>
-    <script src="http://unsecured-external-source.com/external.js"></script> <!-- Insecure external script -->
-</head>
-<body>
-    <h1>Welcome to the Vulnerable Page</h1>
-    <p id="demo"></p>
-    <button type="button" onclick="displayInput()">Click me</button> <!-- Inline event handler -->
-    <script>
-        function displayInput() {
-            var userInput = prompt("Please enter your name", "Harry Potter");
-            document.getElementById("demo").innerHTML = userInput; // Potential XSS vulnerability
-        }
-    </script>
-</body>
-</html>
+Erro na chamada à API: {0}Unauthorized
