@@ -1,0 +1,22 @@
+name: Story, Story Task, and Point Creation
+
+on:
+    workflow_dispatch:
+        inputs:
+            environment:
+                description: 'Environment to run the story creation'
+                required: true
+
+jobs:
+  GFT-AI-Impact-Story-Creation:
+    runs-on: self-hosted # use self-hosted as we do not have access to GitHub Actions hosted runners
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: GFT AImpact code review and fix
+        run: |
+          cd /Users/pgsp/POC/gft-aimpact-cli.uk
+          gft storycreator --description github.event.inputs.<description> --config_path configfiles/story/config-sample.yaml
+      
+        
