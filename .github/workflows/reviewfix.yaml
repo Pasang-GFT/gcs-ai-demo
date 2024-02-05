@@ -1,0 +1,22 @@
+name: Review and Fix Code
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - '*correction*'
+
+jobs:
+  GFT-AI-Impact-Code-Review-and-Fix:
+    runs-on: self-hosted # use self-hosted as we do not have access to GitHub Actions hosted runners
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: GFT AImpact code review and fix
+        run: |
+          cd /Users/pgsp/POC/gft-aimpact-cli.uk
+          gft codefix --config_path config-sample.yaml
+      
+        
+

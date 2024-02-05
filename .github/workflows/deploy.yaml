@@ -1,0 +1,43 @@
+name: Deploy to GCP
+
+on:
+  push:
+    branches:
+      - main # trigger the workflow when changes are pushed to pasang branch
+
+jobs:
+  Terraform:
+    runs-on: self-hosted
+    needs: GFT-AI-Impact-Code-Review-and-Fix
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 0.14.0
+
+      - name: Terraform Init
+        run: |
+          cd /Users/pgsp/POC/gcs-ai-demo
+          terraform init
+
+      - name: Terraform Validate
+        run: |
+          cd /Users/pgsp/POC/gcs-ai-demo
+          terraform validate
+
+      - name: Terraform Plan
+        run: |
+          cd /Users/pgsp/POC/gcs-ai-demo
+          terraform plan
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+      - name: Terraform Apply
+        run: |
+          cd /Users/pgsp/POC/gcs-ai-demo 
+          terraform destroy -auto-approve
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
