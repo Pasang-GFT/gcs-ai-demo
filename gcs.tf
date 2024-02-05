@@ -1,7 +1,6 @@
 provider "google" {
   project = "dev-env-1-412811"
   region  = "eu-west1"
-  credentials = file("credentials.json") // Hardcoding credentials is a bad practice
 }
 
 resource "google_storage_bucket" "bucket" {
