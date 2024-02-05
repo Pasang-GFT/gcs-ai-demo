@@ -9,7 +9,7 @@ on:
 jobs:
   GFT-AI-Impact-Code-Review-and-Fix:
     runs-on: self-hosted # use self-hosted as we do not have access to GitHub Actions hosted runners
-        if: contains(github.event.head_commit.message, 'go')
+    if: contains(github.event.head_commit.message, 'codefix')
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -18,6 +18,5 @@ jobs:
         run: |
           cd /Users/pgsp/POC/gft-aimpact-cli.uk
           gft codefix --config_path configfiles/fix/config-sample.yaml
-      
         
 
