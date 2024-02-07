@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Language" content="en">
     <title>Vulnerable Page</title>
-    <script src="http://unsecured-external-source.com/external.js"></script> <!-- Insecure external script -->
+    <script src="http://unsecured-external-source.com/external.js" integrity="sha384-oqVuAfXRKap7fdgcCY5uykM6s7q4gWnP5zJ8fzmVkU7xjzc2jHfK" crossorigin="anonymous"></script>
 </head>
 <body>
     <h1>Welcome to the Vulnerable Page</h1>
     <p id="demo"></p>
-    <button type="button" onclick="displayInput()">Click me</button> <!-- Inline event handler -->
+    <button type="button" id="clickButton">Click me</button>
     <script>
-        function displayInput() {
+        document.getElementById("clickButton").addEventListener("click", function() {
             var userInput = prompt("Please enter your name", "Harry Potter");
-            document.getElementById("demo").innerHTML = userInput; // Potential XSS vulnerability
-        }
+            if (userInput) {
+                document.getElementById("demo").textContent = userInput;
+            }
+        });
     </script>
 </body>
 </html>
