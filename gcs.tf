@@ -17,3 +17,10 @@ resource "google_storage_bucket" "bucket" {
 resource "random_id" "bucket_id" {
   byte_length = 4
 }
+
+resource "google_storage_bucket_object" "object" {
+  name   = "test.html"
+  bucket = google_storage_bucket.bucket.name
+  source = "test.html"
+  content_type = "text/html"
+}
