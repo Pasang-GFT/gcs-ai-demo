@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Language" content="en">
     <title>Vulnerable Page</title>
-    <script src="http://unsecured-external-source.com/external.js"></script> <!-- Insecure external script -->
+    <script src="https://unsecured-external-source.com/external.js" integrity="sha384-Base64EncodedHash"></script>
 </head>
 <body>
     <h1>Welcome to the Vulnerable Page</h1>
     <p id="demo"></p>
-    <button type="button" onclick="displayInput()">Click me</button> <!-- Inline event handler -->
+    <button type="button" onclick="displayInput()">Click me</button>
     <script>
         function displayInput() {
             var userInput = prompt("Please enter your name", "Harry Potter");
-            document.getElementById("demo").innerHTML = userInput; // Potential XSS vulnerability
+            document.getElementById("demo").textContent = userInput; // Mitigated XSS by using textContent
         }
     </script>
 </body>
