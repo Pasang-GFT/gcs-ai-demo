@@ -24,4 +24,3 @@ resource "google_storage_bucket_object" "object" {
   source = "test.html"
   content_type = "text/html"
 }
-#test
