@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Alert XSS Vulnerability</h2>
+
+<button onclick="xssFunction()">Try it</button>
+
+<script>
+function xssFunction() {
+  var userInput = prompt("Please enter your name", "Harry Potter");
+  document.getElementById("demo").innerHTML = userInput;
+}
+</script>
+
+<p id="demo"></p>
+
+</body>
+</html>
