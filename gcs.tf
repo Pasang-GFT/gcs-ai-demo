@@ -5,7 +5,6 @@ provider "google" {
 
 resource "google_storage_bucket" "bucket" {
   name     = "my-bucket"
-  location = "EUROPE-WEST1"
   project  = "dev-env-1-412811"
 
   uniform_bucket_level_access = true
