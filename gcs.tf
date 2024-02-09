@@ -12,4 +12,11 @@ resource "google_storage_bucket" "bucket" {
 
   uniform_bucket_level_access = true
 }
-#
+
+resource "google_storage_bucket_iam_member" "bucket_iam" {
+  bucket = google_storage_bucket.bucket.name
+  role   = "roles/storage.objectViewer"
+  member = "allUsers"
+}
+```
+
