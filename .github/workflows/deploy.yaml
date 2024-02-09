@@ -40,3 +40,8 @@ jobs:
           terraform apply -auto-approve
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+      
+      - name: GFT Auto Doc
+        run: |
+          cd /Users/pgsp/POC/gcs-ai-demo
+          gft autodoc --config_path /Users/pgsp/POC/gft-aimpact-cli.uk/configfiles/autodoc/config-sample.yaml
