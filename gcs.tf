@@ -1,22 +1,20 @@
 provider "google" {
   project = "dev-env-1-412811"
-  region  = "europe-west1"
+}
+
+resource "random_id" "bucket_id" {
+  byte_length = 8
 }
 
 resource "google_storage_bucket" "bucket" {
-  name     = "my-bucket"
-  location = "EUROPE-WEST1"
-  project  = "dev-env-1-412811"
-
+  name                        = "ai-demo-${random_id.bucket_id.hex}"
+  location                    = "EU"
   uniform_bucket_level_access = true
-
-  lifecycle_rule {
-    action {
-      type = "Delete"
-    }
-
-    condition {
-      age = 7
-    }
+  versioning {
+    enabled = true
+  }
+  logging {
+    log_bucket        = "ai-demo-logs-${random_id.bucket_id.hex}"
+    log_object_prefix = "log"
   }
 }
