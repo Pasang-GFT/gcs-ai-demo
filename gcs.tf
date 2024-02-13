@@ -4,6 +4,14 @@ provider "google" {
 
 resource "google_storage_bucket" "bucket" {
   name     = "my-bucket-1672"
+  versioning {
+    enabled = true
+  }
+
+  logging {
+    log_bucket        = "my-logs-bucket"
+    log_object_prefix = "log"
+  }
 
   uniform_bucket_level_access = true
 
@@ -17,4 +25,3 @@ resource "google_storage_bucket" "bucket" {
     }
   }
 }
-#test
